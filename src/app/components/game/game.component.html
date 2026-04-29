@@ -3,8 +3,8 @@
     <div class="briefing-screen">
       <div class="title">📁 SISTEMA DE ARCHIVOS POLICIALES</div>
       <div class="subtitle">CONEXIÓN SEGURA ESTABLECIDA</div>
+      <div class="cases-header">SELECCIONA UN EXPEDIENTE:</div>
       <div class="cases-list">
-        <div class="cases-header">SELECCIONA UN EXPEDIENTE:</div>
         @for (caso of cases; track caso.id) {
           <button class="case-btn" (click)="selectCase(caso)">
             <span class="case-id">{{caso.id}}</span>
