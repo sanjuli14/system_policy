@@ -48,6 +48,7 @@ Thumbs.db
 
 # Auto-generated environment files (contain secrets)
 /src/environments/environment.ts
+/src/environments/environment.development.ts
 /src/environments/environment.prod.ts
-/src/environments/environment.ts.example
-# environment.prod.ts is tracked - contains API key
+# environment.ts.example is the template (tracked)
+# Copy environment.ts.example to environment.ts for local dev
