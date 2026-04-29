@@ -49,4 +49,4 @@ Thumbs.db
 # Auto-generated environment files (contain secrets)
 /src/environments/environment.ts
 /src/environments/environment.development.ts
-/src/environments/environment.production.ts
+# environment.prod.ts is tracked - uses env vars at runtime
