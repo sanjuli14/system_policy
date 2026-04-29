@@ -1,0 +1,64 @@
+<div class="help-container">
+  <div class="help-header">
+    <span class="icon">📖</span> MANUAL DE JUEGO
+    <button class="btn-close" (click)="close()">X</button>
+  </div>
+  
+  <div class="help-content">
+    <div class="help-section">
+      <div class="section-title">OBJETIVO</div>
+      <p>Resuelve el caso antes de que el tiempo se agote (15 minutos). Encuentra al asesino usando comandos y descubriendo evidencias.</p>
+    </div>
+
+    <div class="help-section">
+      <div class="section-title">COMANDOS</div>
+      <div class="command-list">
+        <div class="command-item">
+          <code>/analizar [cosa]</code>
+          <span>Analiza una pista o evidencia</span>
+        </div>
+        <div class="command-item">
+          <code>/interrogar [nombre]</code>
+          <span>Entrevista a un sospechoso</span>
+        </div>
+        <div class="command-item">
+          <code>/acusar [nombre]</code>
+          <span>Acusa al asesino (requiere pruebas)</span>
+        </div>
+        <div class="command-item">
+          <code>[pregunta]</code>
+          <span>Pregunta sobre el caso</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="help-section">
+      <div class="section-title">PELIGROS</div>
+      <ul>
+        <li>Si preguntas directamente quién es el asesino: +15% corrupcion, -30 segundos</li>
+        <li>Si el tiempo llega a 0: Game Over</li>
+        <li>Nivel de corrupcion al 100%: Pierdes</li>
+      </ul>
+    </div>
+
+    <div class="help-section">
+      <div class="section-title">COMO GANAR</div>
+      <ol>
+        <li>1. Explora la escena del crimen</li>
+        <li>2. Analiza las pistas encontradas</li>
+        <li>3. Interroga a los sospechosos</li>
+        <li>4. Descubre contradicciones</li>
+        <li>5. Acusa al culpable con las pruebas correctas</li>
+      </ol>
+    </div>
+
+    <div class="help-section">
+      <div class="section-title">EJEMPLOS</div>
+      <div class="example">
+        <code>/analizar llave</code>
+        <code>/interrogar Maria</code>
+        <code>/acusar Juan</code>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="game-container" [class.glitch]="gameState.isGlitch">
+  @if (gameState.phase === 'briefing') {
+    <div class="briefing-screen">
+      <div class="title">📁 SISTEMA DE ARCHIVOS POLICIALES</div>
+      <div class="subtitle">CONEXIÓN SEGURA ESTABLECIDA</div>
+      <div class="cases-list">
+        <div class="cases-header">SELECCIONA UN EXPEDIENTE:</div>
+        @for (caso of cases; track caso.id) {
+          <button class="case-btn" (click)="selectCase(caso)">
+            <span class="case-id">{{caso.id}}</span>
+            <span class="case-title">{{caso.title}}</span>
+          </button>
+        }
+      </div>
+      <button class="btn-help" (click)="showHelp()">📖 AYUDA</button>
+    </div>
+  } @else {
+    <div class="game-layout">
+      <div class="main-area">
+        <app-terminal
+          [messages]="gameState.messages"
+          [isGlitch]="gameState.isGlitch"
+          [isLoading]="isLoading"
+          [disabled]="isLoading || gameState.phase === 'gameover'"
+          (command)="onCommand($event)"
+        ></app-terminal>
+      </div>
+      <div class="sidebar">
+        <div class="sidebar-top">
+          <app-evidence-board
+            [evidence]="gameState.evidence"
+          ></app-evidence-board>
+        </div>
+        <div class="sidebar-bottom">
+          <app-status-monitor
+            [timeRemaining]="gameState.timeRemaining"
+            [corruption]="gameState.corruption"
+            [phase]="gameState.phase"
+            (exit)="onExit()"
+          ></app-status-monitor>
+        </div>
+      </div>
+    </div>
+  }
+  
+  @if (showHelpPanel) {
+    <div class="help-overlay" (click)="showHelp()">
+      <div class="help-panel" (click)="$event.stopPropagation()">
+        <app-help (closeHelp)="showHelp()"></app-help>
+      </div>
+    </div>
+  }
+  
+  @if (gameState.phase === 'gameover') {
+    <div class="gameover-overlay">
+      <div class="gameover-content">
+        <div class="result" [class.win]="gameWon">{{gameWon ? 'CASO RESUELTO' : 'ARCHIVO PERDIDO'}}</div>
+        <div class="message">{{gameOverMessage}}</div>
+        <button class="btn-restart" (click)="restart()">NUEVO CASO</button>
+      </div>
+    </div>
+  }
+</div>

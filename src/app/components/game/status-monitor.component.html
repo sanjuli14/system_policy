@@ -1,0 +1,29 @@
+<div class="status-container">
+  <div class="status-header">
+    MONITOR DE ESTADO
+  </div>
+  
+  <div class="timer-section">
+    <div class="label">TIEMPO RESTANTE</div>
+<div class="timer" [class.critical]="timeRemaining < 120">
+  {{formatTime(timeRemaining)}}
+</div>
+  </div>
+
+  <div class="corruption-section">
+    <div class="label">NIVEL DE CORRUPCIÓN</div>
+    <div class="corruption-bar">
+      <div class="bar-fill" [style.width.%]="corruption" [class.high]="corruption > 70"></div>
+    </div>
+    <div class="corruption-value">{{corruption}}%</div>
+  </div>
+
+  <div class="phase-section">
+    <div class="label">FASE ACTUAL</div>
+    <div class="phase" [class]="phase">{{phaseDisplay}}</div>
+  </div>
+
+  <div class="actions">
+    <button class="btn-exit" (click)="onExit()">ABANDONAR</button>
+  </div>
+</div>

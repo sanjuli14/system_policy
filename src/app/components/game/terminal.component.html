@@ -1,0 +1,29 @@
+<div class="terminal-container" [class.glitch]="isGlitch">
+  <div class="terminal-header">
+    <span class="blink">▌</span> CONEXIÓN SEGURA // ARCHIVO MÉDICO-FORENSE
+  </div>
+  <div class="terminal-messages" #messagesContainer>
+    @for (msg of messages; track msg.id) {
+      <div class="message" [class.system]="msg.role === 'system'">
+        <span class="timestamp">{{msg.timestamp | date:'HH:mm:ss'}}</span>
+        <span class="content">{{msg.content}}</span>
+      </div>
+    }
+    @if (isLoading) {
+      <div class="message loading">
+        <span class="timestamp">{{currentTime}}</span>
+        <span class="content">PROCESANDO<span class="dots">...</span></span>
+      </div>
+    }
+  </div>
+  <div class="terminal-input">
+    <span class="prompt">▸</span>
+    <input 
+      type="text" 
+      [(ngModel)]="inputValue"
+      (keydown.enter)="onEnter()"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+    />
+  </div>
+</div>

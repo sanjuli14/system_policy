@@ -1,0 +1,28 @@
+<div class="evidence-container">
+  <div class="evidence-header">
+    <span class="icon">📁</span> TABLÓN DE EVIDENCIAS
+  </div>
+  <div class="evidence-list" #evidenceList>
+    @for (item of evidence; track item.id) {
+      <div class="evidence-card" [class]="'type-' + item.type">
+        <div class="card-header">
+          <span class="type-badge">{{item.type | uppercase}}</span>
+          <span class="name">{{item.name}}</span>
+        </div>
+        <div class="card-body">
+          {{item.description}}
+        </div>
+        <div class="card-footer">
+          <span class="location">📍 {{item.location}}</span>
+        </div>
+      </div>
+    }
+    @empty {
+      <div class="empty-state">
+        <span class="icon">🔍</span>
+        <span>No hay evidencia descubierta aún.</span>
+        <span class="hint">Investiga la escena del crimen...</span>
+      </div>
+    }
+  </div>
+</div>
