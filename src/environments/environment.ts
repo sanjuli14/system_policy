@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
   openrouterApiKey:
-    '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',
+    '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',
   defaultPlayerName: 'Streamer',
 };
