@@ -1,5 +1,5 @@
 {
   "installCommand": "npm install",
-  "buildCommand": "node scripts/generate-env.js && ng build",
+  "buildCommand": "OPENROUTER_API_KEY=$OPENROUTER_API_KEY node scripts/generate-env.js && ng build",
   "framework": "angular"
 }

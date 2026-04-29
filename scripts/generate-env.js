@@ -1,5 +1,5 @@
 const fs = require('fs');
-const key = process.env.NG_APP_OPENROUTER_API_KEY || '';
+const key = process.env.OPENROUTER_API_KEY || '';
 const content = `export const environment = {
   production: true,
   openrouterApiKey: '${key}',
