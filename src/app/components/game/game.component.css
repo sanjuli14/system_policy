@@ -42,7 +42,7 @@
 }
 
 .cases-header {
-  color: #666;
+  color: #888;
   font-size: 16px;
   margin-bottom: 20px;
   font-family: 'Courier New', monospace;
@@ -112,38 +112,6 @@
   .cases-list {
     grid-template-columns: 1fr;
   }
-}
-  color: #666;
-  font-size: 13px;
-  margin-bottom: 14px;
-  font-family: 'Courier New', monospace;
-}
-
-.case-btn {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 18px 24px;
-  background: #0a0a0a;
-  border: 2px solid #00ff41;
-  color: #00ff41;
-  cursor: pointer;
-  font-family: 'Courier New', monospace;
-  text-align: left;
-}
-
-.case-btn:hover {
-  background: #001100;
-}
-
-.case-id {
-  font-weight: bold;
-  color: #00aa2a;
-  font-size: 16px;
-}
-
-.case-title {
-  font-size: 14px;
 }
 
 .game-layout {
