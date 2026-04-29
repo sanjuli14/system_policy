@@ -1,7 +1,0 @@
-{
-  "installCommand": "npm install",
-  "buildCommand": "node scripts/generate-env.js && ng build",
-  "buildEnv": {
-    "OPENROUTER_API_KEY": "OPENROUTER_API_KEY"
-  }
-}
