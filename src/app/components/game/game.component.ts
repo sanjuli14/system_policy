@@ -36,11 +36,54 @@ export class GameComponent implements OnInit, OnDestroy {
   isLoading = false;
   gameWon = false;
   gameOverMessage = '';
+  
+  // Windows 7 state
+  isMinimized = false;
+  isMaximized = false;
+  currentTime = '';
+  private timeInterval: any;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.updateClock();
+    this.timeInterval = setInterval(() => this.updateClock(), 1000);
+  }
 
   ngOnDestroy() {
     this.destroy$.unsubscribe();
+    if (this.timeInterval) clearInterval(this.timeInterval);
+  }
+
+  updateClock() {
+    const now = new Date();
+    this.currentTime = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  toggleMinimize() {
+    this.isMinimized = !this.isMinimized;
+  }
+
+  toggleMaximize() {
+    this.isMaximized = !this.isMaximized;
+  }
+
+  closeWindow() {
+    this.isMinimized = true;
+  }
+
+  openExplorer() {
+    this.isMinimized = false;
+  }
+
+  // Abrir ventana desde taskbar
+  openFromTaskbar() {
+    if (this.gameState.phase === 'briefing') {
+      this.isMinimized = false;
+    }
+  }
+
+  showDesktop() {
+    this.gameState.phase = 'briefing';
+    this.gameState.currentCase = null;
   }
 
   showHelp() {

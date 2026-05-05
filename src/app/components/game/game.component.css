@@ -1,9 +1,375 @@
 .game-container {
-  background: #000;
+  background: url('/assets/fondo.png') center/cover no-repeat fixed;
   height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  padding-bottom: 45px;
+}
+
+.game-container.glitch {
+  animation: screenGlitch 0.1s infinite;
+}
+
+@keyframes screenGlitch {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+
+.windows-desktop {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  align-content: flex-start;
+}
+
+.explorer-window {
+  background: rgba(20, 40, 80, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.explorer-titlebar {
+  background: linear-gradient(to bottom, #2a7ac7, #1e5aa5);
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.title-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.folder-icon {
+  font-size: 18px;
+}
+
+.title-text {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.window-controls {
+  display: flex;
+  gap: 2px;
+}
+
+.win-btn {
+  width: 28px;
+  height: 22px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.win-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.win-btn.close:hover {
+  background: #e81123;
+}
+
+.explorer-toolbar {
+  background: linear-gradient(to bottom, #3a7ac7, #2a60a0);
+  padding: 6px 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.toolbar-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.tb-btn {
+  padding: 4px 10px;
+  background: linear-gradient(to bottom, #3a6ea5, #1e5aa5);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.tb-btn:hover {
+  background: linear-gradient(to bottom, #4a7eb5, #2e6ab5);
+}
+
+.address-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.address-bar .label {
+  color: #a8d4f8;
+  font-size: 12px;
+}
+
+.path-input {
+  background: #fff;
+  padding: 4px 10px;
+  border-radius: 3px;
+  color: #333;
+  font-size: 12px;
+  flex: 1;
+}
+
+.go-btn {
+  padding: 4px 12px;
+  background: linear-gradient(to bottom, #3a6ea5, #1e5aa5);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.explorer-content {
+  display: flex;
+  flex: 1;
+  min-height: 400px;
+}
+
+.sidebar-left {
+  width: 180px;
+  background: rgba(0,20,40,0.5);
+  padding: 10px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.favorites {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fav-item {
+  padding: 6px 10px;
+  color: #a8d4f8;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.fav-item:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.main-content {
+  flex: 1;
+  padding: 15px;
+  background: rgba(0,10,25,0.6);
+}
+
+.cases-header {
+  color: #c8e4ff;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.folder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px;
+}
+
+.folder-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.folder-item:hover {
+  background: rgba(255,255,255,0.1);
+  outline: 1px solid rgba(255,255,255,0.3);
+}
+
+.folder-icon-large {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.folder-name {
+  color: #fff;
+  font-size: 11px;
+  word-break: break-word;
+}
+
+.explorer-statusbar {
+  background: linear-gradient(to bottom, #2a60a0, #1e4a80);
+  padding: 6px 12px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  color: #a8d4f8;
+  font-size: 11px;
+}
+
+.desktop-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70px;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.desktop-icon:hover {
+  background: rgba(255,255,255,0.15);
+  outline: 1px solid rgba(255,255,255,0.3);
+}
+
+.desktop-icon-img {
+  font-size: 32px;
+  margin-bottom: 4px;
+}
+
+.desktop-icon-label {
+  color: #fff;
+  font-size: 11px;
+  text-align: center;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: rgba(30, 60, 100, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  z-index: 1000;
+}
+
+.start-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: linear-gradient(to bottom, #1e4a80, #1e5aa5);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.start-button:hover {
+  background: linear-gradient(to bottom, #2e5a90, #3a6ea5);
+}
+
+.start-icon {
+  font-size: 18px;
+}
+
+.start-text {
+  font-size: 12px;
+}
+
+.taskbar-divider {
+  width: 2px;
+  height: 24px;
+  background: rgba(255,255,255,0.2);
+  margin: 0 8px;
+}
+
+.taskbar-items {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.taskbar-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: linear-gradient(to bottom, #1e4a80, #1e5aa5);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  max-width: 180px;
+}
+
+.taskbar-item:hover, .taskbar-item.active {
+  background: linear-gradient(to bottom, #2e6a90, #3a7aa5);
+}
+
+.taskbar-item.active {
+  background: linear-gradient(to bottom, #1650a0, #1e60b0);
+}
+
+.taskbar-icon {
+  font-size: 16px;
+}
+
+.taskbar-label {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.taskbar-clock {
+  background: rgba(0,0,0,0.2);
+  padding: 6px 12px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+}
+
+.clock-time {
+  font-size: 12px;
+}
+
+.explorer-window.minimized {
+  display: none;
 }
 
 .game-container.glitch {
@@ -29,77 +395,87 @@
 }
 
 .title {
-  font-size: 42px;
-  color: #00ff41;
-  font-family: 'Courier New', monospace;
+  font-size: 32px;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .subtitle {
-  color: #006622;
-  font-size: 18px;
+  color: #c8e4ff;
+  font-size: 16px;
   margin-bottom: 30px;
 }
 
 .cases-header {
-  color: #888;
-  font-size: 16px;
+  color: #a8d4f8;
+  font-size: 14px;
   margin-bottom: 20px;
-  font-family: 'Courier New', monospace;
-  grid-column: 1 / -1;
 }
 
 .cases-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 12px;
   width: 100%;
-  max-width: 900px;
+  max-width: 800px;
 }
 
 .case-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  padding: 20px 16px;
-  background: #0a0a0a;
-  border: 2px solid #00ff41;
-  color: #00ff41;
+  gap: 8px;
+  padding: 18px 14px;
+  background: linear-gradient(to bottom, #3a7ac7, #1e5aa5);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  color: #fff;
   cursor: pointer;
-  font-family: 'Courier New', monospace;
-  text-align: center;
-  min-height: 80px;
+  min-height: 70px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.2);
+  transition: all 0.15s ease;
 }
 
 .case-btn:hover {
-  background: #001100;
+  background: linear-gradient(to bottom, #4d8fe8, #2f7bc7);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.case-btn:active {
+  background: linear-gradient(to bottom, #1e5aa5, #1650a0);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .case-id {
-  font-weight: bold;
-  font-size: 20px;
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .case-title {
-  font-size: 14px;
+  font-size: 12px;
+  color: #c8e4ff;
 }
 
 .btn-help {
   margin-top: 30px;
-  padding: 14px 28px;
-  background: #0a0a0a;
-  border: 2px solid #444;
-  color: #888;
+  padding: 12px 24px;
+  background: linear-gradient(to bottom, #4a4a4a, #2e2e2e);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 4px;
+  color: #fff;
   cursor: pointer;
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
+  font-size: 13px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
 }
 
 .btn-help:hover {
-  background: #1a1a1a;
-  color: #ccc;
-  border-color: #666;
+  background: linear-gradient(to bottom, #5a5a5a, #3e3e3e);
+}
+
+.btn-help:active {
+  background: linear-gradient(to bottom, #3e3e3e, #2e2e2e);
 }
 
 @media (max-width: 700px) {
@@ -118,13 +494,14 @@
   display: flex;
   height: 100%;
   overflow: hidden;
+  gap: 10px;
+  padding: 10px;
 }
 
 .main-area {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 10px;
   min-width: 0;
   overflow: hidden;
 }
@@ -135,8 +512,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 10px;
-  padding-left: 0;
   overflow: hidden;
 }
 
@@ -157,7 +532,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.95);
+  background: rgba(0, 20, 40, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -166,45 +541,50 @@
 }
 
 .gameover-content {
-  background: #0d0d0d;
-  border: 2px solid #444;
+  background: linear-gradient(to bottom, #3a7ac7, #1e5aa5);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 12px;
   padding: 40px 60px;
   text-align: center;
   max-width: 90%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
 .result {
-  font-size: 32px;
-  font-family: 'Courier New', monospace;
+  font-size: 28px;
+  font-weight: 600;
   margin-bottom: 18px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .result.win {
-  color: #00ff41;
+  color: #90ff90;
 }
 
 .result:not(.win) {
-  color: #ff3333;
+  color: #ffb0b0;
 }
 
 .message {
-  color: #888;
+  color: #c8e4ff;
   font-size: 14px;
   margin-bottom: 24px;
 }
 
 .btn-restart {
-  padding: 14px 28px;
-  background: #001100;
-  border: 2px solid #00ff41;
-  color: #00ff41;
+  padding: 12px 28px;
+  background: linear-gradient(to bottom, #4a8f4a, #2e6e2e);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 4px;
+  color: #fff;
   cursor: pointer;
-  font-family: 'Courier New', monospace;
   font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
 .btn-restart:hover {
-  background: #002200;
+  background: linear-gradient(to bottom, #5aa85a, #3e863e);
 }
 
 .help-overlay {
@@ -213,7 +593,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0, 20, 40, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;

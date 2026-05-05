@@ -1,43 +1,142 @@
 <div class="game-container" [class.glitch]="gameState.isGlitch">
   @if (gameState.phase === 'briefing') {
-    <div class="briefing-screen">
-      <div class="title">📁 SISTEMA DE ARCHIVOS POLICIALES</div>
-      <div class="subtitle">CONEXIÓN SEGURA ESTABLECIDA</div>
-      <div class="cases-header">SELECCIONA UN EXPEDIENTE:</div>
-      <div class="cases-list">
-        @for (caso of cases; track caso.id) {
-          <button class="case-btn" (click)="selectCase(caso)">
-            <span class="case-id">{{caso.id}}</span>
-            <span class="case-title">{{caso.title}}</span>
-          </button>
-        }
+    <div class="windows-desktop">
+      <!-- Desktop Icons -->
+      <div class="desktop-icons">
+        <div class="desktop-icon" (click)="showHelp()">
+          <div class="desktop-icon-img">📖</div>
+          <div class="desktop-icon-label">Ayuda</div>
+        </div>
+        <div class="desktop-icon" (click)="restart()">
+          <div class="desktop-icon-img">🗑️</div>
+          <div class="desktop-icon-label">Papelera</div>
+        </div>
       </div>
-      <button class="btn-help" (click)="showHelp()">📖 AYUDA</button>
+      
+      <!-- Explorer Window -->
+      <div class="explorer-window" [class.minimized]="isMinimized">
+        <div class="explorer-titlebar">
+          <div class="title-icons">
+            <span class="folder-icon">📁</span>
+            <span class="title-text">Archivos Policiales - Casos</span>
+          </div>
+          <div class="window-controls">
+            <button class="win-btn" (click)="toggleMinimize()">_</button>
+            <button class="win-btn" (click)="toggleMaximize()">□</button>
+            <button class="win-btn close" (click)="closeWindow()">×</button>
+          </div>
+        </div>
+        
+        <div class="explorer-toolbar">
+          <div class="toolbar-buttons">
+            <button class="tb-btn">Organizar ▼</button>
+            <button class="tb-btn"> burn</button>
+            <button class="tb-btn">Propiedades</button>
+          </div>
+          <div class="address-bar">
+            <span class="label">Dirección:</span>
+            <div class="path-input">📁 Equipo ▸ Documentos ▸ Casos</div>
+            <button class="go-btn">Ir</button>
+          </div>
+        </div>
+        
+        <div class="explorer-content">
+          <div class="sidebar-left">
+            <div class="favorites">
+              <div class="fav-item">⭐ Favoritos</div>
+              <div class="fav-item">📄 Recientes</div>
+              <div class="fav-item">🖥️ Equipo</div>
+              <div class="fav-item">📁 Documentos</div>
+              <div class="fav-item">🔍 Buscar</div>
+            </div>
+          </div>
+          
+          <div class="main-content">
+            <div class="cases-header">SELECCIONA UN EXPEDIENTE:</div>
+            <div class="folder-grid">
+              @for (caso of cases; track caso.id) {
+                <div class="folder-item" (click)="selectCase(caso)">
+                  <div class="folder-icon-large">📁</div>
+                  <div class="folder-name">{{caso.id}}-{{caso.title}}</div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+        
+        <div class="explorer-statusbar">
+          <span>{{cases.length}} elementos</span>
+        </div>
+      </div>
+      
+      <!-- Taskbar -->
+      <div class="taskbar">
+        <button class="start-button">
+          <span class="start-icon">🪟</span>
+          <span class="start-text">Inicio</span>
+        </button>
+        
+        <div class="taskbar-divider"></div>
+        
+        <div class="taskbar-items">
+          <div class="taskbar-item" [class.active]="!isMinimized" (click)="openFromTaskbar()">
+            <span class="taskbar-icon">📁</span>
+            <span class="taskbar-label">Archivos</span>
+          </div>
+        </div>
+        
+        <div class="taskbar-clock">
+          <div class="clock-time">{{currentTime}}</div>
+        </div>
+      </div>
     </div>
   } @else {
-    <div class="game-layout">
-      <div class="main-area">
-        <app-terminal
-          [messages]="gameState.messages"
-          [isGlitch]="gameState.isGlitch"
-          [isLoading]="isLoading"
-          [disabled]="isLoading || gameState.phase === 'gameover'"
-          (command)="onCommand($event)"
-        ></app-terminal>
-      </div>
-      <div class="sidebar">
-        <div class="sidebar-top">
-          <app-evidence-board
-            [evidence]="gameState.evidence"
-          ></app-evidence-board>
+    <div class="windows-desktop">
+      <!-- Taskbar -->
+      <div class="taskbar">
+        <button class="start-button" (click)="showDesktop()">
+          <span class="start-icon">🪟</span>
+          <span class="start-text">Inicio</span>
+        </button>
+        
+        <div class="taskbar-divider"></div>
+        
+        <div class="taskbar-items">
+          <div class="taskbar-item" (click)="showHelp()">
+            <span class="taskbar-icon">📖</span>
+            <span class="taskbar-label">Ayuda</span>
+          </div>
         </div>
-        <div class="sidebar-bottom">
-          <app-status-monitor
-            [timeRemaining]="gameState.timeRemaining"
-            [corruption]="gameState.corruption"
-            [phase]="gameState.phase"
-            (exit)="onExit()"
-          ></app-status-monitor>
+        
+        <div class="taskbar-clock">
+          <div class="clock-time">{{currentTime}}</div>
+        </div>
+      </div>
+      
+      <div class="game-layout">
+        <div class="main-area">
+          <app-terminal
+            [messages]="gameState.messages"
+            [isGlitch]="gameState.isGlitch"
+            [isLoading]="isLoading"
+            [disabled]="isLoading || gameState.phase === 'gameover'"
+            (command)="onCommand($event)"
+          ></app-terminal>
+        </div>
+        <div class="sidebar">
+          <div class="sidebar-top">
+            <app-evidence-board
+              [evidence]="gameState.evidence"
+            ></app-evidence-board>
+          </div>
+          <div class="sidebar-bottom">
+            <app-status-monitor
+              [timeRemaining]="gameState.timeRemaining"
+              [corruption]="gameState.corruption"
+              [phase]="gameState.phase"
+              (exit)="onExit()"
+            ></app-status-monitor>
+          </div>
         </div>
       </div>
     </div>
