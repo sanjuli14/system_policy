@@ -20,10 +20,46 @@
 
 .windows-desktop {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 10px;
-  align-content: flex-start;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.windows-desktop.with-case .game-layout {
+  height: 100%;
+  padding: 0;
+}
+
+.windows-desktop.with-case .main-area {
+  height: 100%;
+}
+
+.windows-desktop.with-case .terminal-container {
+  border-radius: 0;
+  height: 100%;
+}
+
+.windows-desktop.with-case .explorer-window,
+.windows-desktop.with-case .desktop-icons {
+  display: none;
+}
+
+.windows-desktop.with-case {
+  padding-bottom: 0;
+}
+
+/* Full screen terminal when case is open */
+.windows-desktop.with-case .game-layout {
+  height: 100%;
+  padding: 0;
+}
+
+.windows-desktop.with-case .main-area {
+  height: 100%;
+}
+
+.windows-desktop.with-case .terminal-container {
+  border-radius: 0;
 }
 
 .explorer-window {
@@ -492,10 +528,10 @@
 
 .game-layout {
   display: flex;
-  height: 100%;
-  overflow: hidden;
+  height: calc(100vh - 55px);
   gap: 10px;
   padding: 10px;
+  overflow: hidden;
 }
 
 .main-area {

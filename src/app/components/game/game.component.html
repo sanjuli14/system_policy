@@ -1,6 +1,6 @@
 <div class="game-container" [class.glitch]="gameState.isGlitch">
   @if (gameState.phase === 'briefing') {
-    <div class="windows-desktop">
+    <div class="windows-desktop" [class.with-case]="false">
       <!-- Desktop Icons -->
       <div class="desktop-icons">
         <div class="desktop-icon" (click)="showHelp()">
@@ -124,21 +124,21 @@
           ></app-terminal>
         </div>
         <div class="sidebar">
-          <div class="sidebar-top">
-            <app-evidence-board
-              [evidence]="gameState.evidence"
-            ></app-evidence-board>
-          </div>
-          <div class="sidebar-bottom">
-            <app-status-monitor
-              [timeRemaining]="gameState.timeRemaining"
-              [corruption]="gameState.corruption"
-              [phase]="gameState.phase"
-              (exit)="onExit()"
-            ></app-status-monitor>
-          </div>
+        <div class="sidebar-top">
+          <app-evidence-board
+            [evidence]="gameState.evidence"
+          ></app-evidence-board>
+        </div>
+        <div class="sidebar-bottom">
+          <app-status-monitor
+            [timeRemaining]="gameState.timeRemaining"
+            [corruption]="gameState.corruption"
+            [phase]="gameState.phase"
+            (exit)="onExit()"
+          ></app-status-monitor>
         </div>
       </div>
+    </div>
     </div>
   }
   
